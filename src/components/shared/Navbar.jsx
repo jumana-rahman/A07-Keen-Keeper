@@ -28,7 +28,7 @@ const Navbar = () => {
 
     return (
         <div className="bg-base-100 shadow-sm">
-            <div className="navbar w-[90%] mx-auto">
+            <div className="navbar max-w-[90%] mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,8 +40,18 @@ const Navbar = () => {
                             
                             {
                             navItems.map((item, index) => (
-                                <Link key={index} href={item.path} className='p-3 rounded-md bg-transparent flex items-center gap-1 text-[#64748b] font-semibold text-[16px] transition-all duration-300 hover:p-3 hover:bg-[#244d3f] hover:text-white'>
-                                    {item.icon}{item.text}
+                                <Link
+                                key={index}
+                                href={item.path}
+                                className={`p-3 rounded-md flex items-center gap-1 font-semibold text-[16px] transition-all duration-300 
+                                ${
+                                    pathname === item.path
+                                    ? "bg-[#244d3f] text-white"
+                                    : "text-[#64748b] hover:bg-[#244d3f] hover:text-white"
+                                }`}
+                                >
+                                {item.icon}
+                                {item.text}
                                 </Link>
                             ))
                         }

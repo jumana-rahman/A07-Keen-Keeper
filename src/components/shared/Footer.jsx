@@ -40,7 +40,7 @@ const Footer = () => {
 
     return (
         <div className='pt-20 pb-7 bg-[#244D3F]'>
-            <div className='w-[90%] mx-auto text-center text-white'>
+            <div className='max-w-[90%] mx-auto text-center text-white'>
                 <div className='flex justify-center'>
                     <Image src={FooterLogo} alt='Logo' />
                 </div>
@@ -66,7 +66,7 @@ const Footer = () => {
                 <div className='text-[16px] text-[rgba(250,250,250,0.7)] block mb-2 md:flex md:mb-0 justify-between items-center'>
                     <p>© 2026 KeenKeeper. All rights reserved.</p>
 
-                    <ul className='block mb-2 md:mb-0 md:flex items-center gap-3'>
+                    <ul className='flex flex-col md:flex-row gap-1.5 md:gap-3 mt-2 md:mt-0 items-center '>
                         {
                             terms.map((term, index) => (
                                 <Link key={index} href={term.path}>
