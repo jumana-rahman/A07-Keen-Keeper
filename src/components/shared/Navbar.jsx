@@ -1,10 +1,13 @@
+"use client";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import { ImStatsDots } from 'react-icons/im';
 import { IoTimeOutline } from 'react-icons/io5';
 import { MdOutlineHome } from "react-icons/md";
 
 const Navbar = () => {
+    const pathname = usePathname();
     const navItems = [
     {
       path: "/",
@@ -52,8 +55,18 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-3 gap-4">
                         {
                             navItems.map((item, index) => (
-                                <Link key={index} href={item.path} className='p-3 rounded-md bg-transparent flex items-center gap-1 text-[#64748b] font-semibold text-[16px] transition-all duration-300 hover:p-3 hover:bg-[#244d3f] hover:text-white'>
-                                    {item.icon}{item.text}
+                                <Link
+                                key={index}
+                                href={item.path}
+                                className={`p-3 rounded-md flex items-center gap-1 font-semibold text-[16px] transition-all duration-300 
+                                ${
+                                    pathname === item.path
+                                    ? "bg-[#244d3f] text-white"
+                                    : "text-[#64748b] hover:bg-[#244d3f] hover:text-white"
+                                }`}
+                                >
+                                {item.icon}
+                                {item.text}
                                 </Link>
                             ))
                         }
