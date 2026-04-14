@@ -1,6 +1,8 @@
 import React from 'react';
 
-const page = () => {
+const FriendPage = async ({params}) => {
+    const {id} = await params;
+    console.log(id, "params");
     return (
         <div>
             friends
@@ -8,4 +10,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default FriendPage;

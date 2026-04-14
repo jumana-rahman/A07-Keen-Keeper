@@ -1,6 +1,10 @@
 import React from 'react';
 
-const page = () => {
+export const metadata = {
+  title: "Keen Keeper | Timeline",
+};
+
+const TimelinePage = () => {
     return (
         <div>
             Timeline
@@ -8,4 +12,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default TimelinePage;

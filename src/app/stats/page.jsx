@@ -1,6 +1,10 @@
 import React from 'react';
 
-const page = () => {
+export const metadata = {
+  title: "Keen Keeper | Stats",
+};
+
+const StatsPage = () => {
     return (
         <div>
             stats
@@ -8,4 +12,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default StatsPage;
