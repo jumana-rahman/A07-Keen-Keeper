@@ -1,54 +1,34 @@
-import Image from 'next/image';
-import React from 'react';
+"use client";
+import FriendInfoCard from '@/components/FriendDetails/FriendInfoCard';
+import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import { BiPhoneCall } from 'react-icons/bi';
-import { FiArchive, FiVideo } from 'react-icons/fi';
+import { FiVideo } from 'react-icons/fi';
 import { MdOutlineTextsms } from 'react-icons/md';
-import { RiDeleteBinLine, RiNotificationSnoozeLine } from 'react-icons/ri';
+import { RiseLoader } from 'react-spinners';
 
-const FriendPage = async ({params}) => {
-    const {id} = await params;
-    console.log(id, "params");
+const FriendPage = () => {
+    const {id} = useParams();
+    const [friend, setFriend] = useState(null);
+
+    useEffect(() => {
+        fetch("/friends.json")
+        .then((res) => res.json())
+        .then((data) => {
+            const selected = data.find((f) => f.id == id);
+            setFriend(selected);
+        });
+    }, [id]);
+
+    if (!friend) return <p className="flex justify-center py-10"><RiseLoader color="#244D3F"/></p>;
+
     return (
         <div className='bg-[#F8FAFC] py-20'>
             <div className='max-w-[80%] mx-auto'>
                 <div className='flex flex-col lg:flex-row justify-center items-center gap-6'>
                     {/* left-column */}
                     <div> 
-                        <div className='card text-center px-6 py-10 bg-white border border-gray-100 rounded-sm'> 
-                            <div className='flex justify-center mb-2'> 
-                                <Image src="https://randomuser.me/api/portraits/men/11.jpg" alt='friend' width={80} height={80} className='rounded-full'/> 
-                            </div> 
-                            
-                            <h3 className='font-semibold text-[20px] text-[#1F2937]'>David Kim</h3> 
-                            
-                            <p className='text-[12px] text-[#64748B]'>62d ago</p> 
-
-                            <div className='flex justify-center mt-1.5'> 
-                                <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">travel</div> 
-                            </div> 
-                            
-                            <div className='flex justify-center gap-1 mt-2'> 
-                                
-                                <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">hobby</div> 
-                                
-                                <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">travel</div> 
-                            </div> 
-
-                            <p className='text-[#64748B] text-[16px] font-medium italic max-w-63.5 mx-auto pt-2'> "Former colleague, great mentor" </p>
-                            
-                            <p className='text-[#64748B] text-[14px] max-w-63.5 mx-auto pt-2'> email@gmail.com </p>
-
-                        </div> 
-
-                        <div className='space-y-3.5 mt-8'>
-                            <button className='btn bg-white w-full mx-auto flex items-center justify-center capitalize'> <RiNotificationSnoozeLine />Snooze 2 Weeks</button>
-
-                            <button className='btn bg-white w-full mx-auto flex items-center justify-center capitalize'> <FiArchive />archive</button>
-
-                            <button className='btn bg-white w-full mx-auto flex items-center justify-center capitalize text-[#EF4444]'> <RiDeleteBinLine />delete</button>
-
-                            
-                        </div>
+                        <FriendInfoCard friend={friend}/>
                     </div>
 
                     {/* right-column */}
