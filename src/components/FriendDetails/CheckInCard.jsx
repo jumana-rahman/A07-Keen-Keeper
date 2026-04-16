@@ -1,9 +1,41 @@
 import React from 'react';
+import { BiPhoneCall } from 'react-icons/bi';
+import { FiVideo } from 'react-icons/fi';
+import { MdOutlineTextsms } from 'react-icons/md';
 
-const CheckInCard = () => {
+const CheckInCard = ({friend}) => {
+    const handleCheckIn = (type) => {
+    const entry = {
+      date: new Date().toISOString(),
+      title: `${type} with ${friend.name}`,
+      type,
+    };
+
+    console.log("New Timeline Entry:", entry);
+  };
     return (
         <div>
-            
+            <div className='card p-8 bg-white border border-gray-100 rounded-md'>
+                <h3 className='font-medium text-[20px] text-[#1F2937] capitalize mb-4'>quick check-in</h3>
+
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-5'>
+                    <div onClick={() => handleCheckIn("Call")} className=' text-center p-4 bg-[#F8FAFC] border border-gray-100 rounded-md cursor-pointer transition-all duration-300 hover:bg-zinc-100'>
+                        <h3 className='font-semibold text-[32px] text-[#1F2937] flex justify-center pb-2'><BiPhoneCall /></h3>
+                        <p className='text-[18px] text-[#1F2937]'>Call</p>
+                    </div>
+
+                    <div onClick={() => handleCheckIn("Text")} className=' text-center p-4 bg-[#F8FAFC] border border-gray-100 rounded-md cursor-pointer transition-all duration-300 hover:bg-zinc-100'>
+                        <h3 className='font-semibold text-[32px] text-[#1F2937] flex justify-center pb-2'><MdOutlineTextsms /></h3>
+                        <p className='text-[18px] text-[#1F2937]'>Text</p>
+                    </div>
+
+                    <div onClick={() => handleCheckIn("Video")} className=' text-center p-4 bg-[#F8FAFC] border border-gray-100 rounded-md cursor-pointer transition-all duration-300 hover:bg-zinc-100'>
+                        <h3 className='font-semibold text-[32px] text-[#1F2937] flex justify-center pb-2'><FiVideo /></h3>
+                        <p className='text-[18px] text-[#1F2937]'>Video</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };

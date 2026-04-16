@@ -47,7 +47,7 @@ const FriendInfoCard = ({friend}) => {
 
             </div> 
 
-            <div className='space-y-3.5 mt-8'>
+            <div className='space-y-3 mt-5'>
                 <button className='btn bg-white w-full mx-auto flex items-center justify-center capitalize'> <RiNotificationSnoozeLine />Snooze 2 Weeks</button>
 
                 <button className='btn bg-white w-full mx-auto flex items-center justify-center capitalize'> <FiArchive />archive</button>
