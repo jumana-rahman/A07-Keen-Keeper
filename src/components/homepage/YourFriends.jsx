@@ -1,36 +1,80 @@
+"use client"
 import Image from 'next/image';
-import React from 'react';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+
+
 
 const YourFriends = () => {
+    const [friends, setFriends] = useState([]);
+
+    useEffect(() => {
+        fetch("/friends.json")
+        .then((res) => res.json())
+        .then((data) => setFriends(data));
+    }, []);
+
+    const getStatusColor = (status) => {
+        if (status === "overdue") return "bg-[#EF4444]";
+        if (status === "almost due") return "bg-[#EFAD44]";
+        return "bg-[#244D3F]";
+    };
+
     return (
         <div className='pb-20'>
             <div className='max-w-[80%] mx-auto'>
                 <h3 className='text-[24px] text-[#1F2937] font-semibold pb-4'>Your Friends</h3>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5'>
-                    <div className='card text-center p-6 bg-white border border-gray-100 rounded-sm'>
-                        <div className='flex justify-center mb-2'>
-                            <Image src="https://randomuser.me/api/portraits/men/11.jpg" 
-                            alt='friend' 
-                            width={80} 
-                            height={80} 
-                            className='rounded-full'/>
-                        </div>
-
-                        <h3 className='font-semibold text-[20px] text-[#1F2937]'>David Kim</h3>
+                    {friends.map((friend) => (
+          
+                    <Link key={friend.id} href={`/friend/${friend.id}`}>
                         
-                        <p className='text-[12px] text-[#64748B]'>62d ago</p>
-
-                        <div className='flex justify-center gap-1 mt-2'>
-                            <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">hobby</div>
-                            
-                            <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">travel</div>
+                        <div className="card text-center p-6 bg-white border border-gray-100 rounded-sm hover:shadow-md transition cursor-pointer">
+                        
+                        <div className="flex justify-center mb-2">
+                            <Image
+                            src={friend.picture}
+                            alt={friend.name}
+                            width={80}
+                            height={80}
+                            className="rounded-full"
+                            />
                         </div>
 
-                        <div className='flex justify-center mt-1.5'>
-                            <div className="badge bg-[#CBFADB] text-[12px] text-[##244D3F] uppercase rounded-full">travel</div>
+                        <h3 className="font-semibold text-[20px] text-[#1F2937]">
+                            {friend.name}
+                        </h3>
+
+                        <p className="text-[12px] text-[#64748B]">
+                            {friend.days_since_contact}d ago
+                        </p>
+
+                        <div className="flex flex-wrap justify-center gap-1 mt-2">
+                            {friend.tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="badge bg-[#CBFADB] text-[12px] text-[#244D3F] uppercase rounded-full"
+                            >
+                                {tag}
+                            </span>
+                            ))}
                         </div>
-                    </div>
+
+                        <div className="flex justify-center mt-3">
+                            <span
+                            className={`badge capitalize text-[12px] text-white rounded-full ${getStatusColor(
+                                friend.status
+                            )}`}
+                            >
+                            {friend.status}
+                            </span>
+                        </div>
+
+                        </div>
+
+                    </Link>
+                    ))}
                 </div>
 
             </div>
