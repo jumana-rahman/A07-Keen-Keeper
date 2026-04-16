@@ -1,5 +1,6 @@
 import Banner from "@/components/homepage/Banner";
 import Counters from "@/components/homepage/Counters";
+import YourFriends from "@/components/homepage/YourFriends";
 
 
 export default function Home() {
@@ -8,6 +9,8 @@ export default function Home() {
     <Banner/>
 
    <Counters/>
+
+   <YourFriends/>
    </div>
   );
 }
