@@ -1,7 +1,13 @@
+import Banner from "@/components/homepage/Banner";
+import Counters from "@/components/homepage/Counters";
 
 
 export default function Home() {
   return (
-   <h2>Hello there</h2>
+   <div className="bg-[#F8FAFC]">
+    <Banner/>
+
+   <Counters/>
+   </div>
   );
 }

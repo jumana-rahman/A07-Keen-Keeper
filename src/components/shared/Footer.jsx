@@ -40,7 +40,7 @@ const Footer = () => {
 
     return (
         <div className='pt-20 pb-7 bg-[#244D3F]'>
-            <div className='max-w-[90%] mx-auto text-center text-white'>
+            <div className='max-w-[80%] mx-auto text-center text-white'>
                 <div className='flex justify-center'>
                     <Image src={FooterLogo} alt='Logo' />
                 </div>
