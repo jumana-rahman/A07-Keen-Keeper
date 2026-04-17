@@ -20,12 +20,11 @@ The app includes a timeline system, analytics dashboard, and detailed friend pro
 <h2>🛠️ Technologies Used</h2>
 <ul>
   <li>Next.js</li>
-  <li>React.js</li>
   <li>Tailwind CSS</li>
   <li>DaisyUI</li>
   <li>Recharts</li>
-  <li>React Hot Toast</li>
-  <li>LocalStorage</li>
+  <li>React Toastify</li>
+  <li>Local Storage</li>
   <li>React Icons</li>
 </ul>
 
@@ -73,10 +72,3 @@ npm run dev
 </pre>
 
 <hr />
-
-<h2>📌 Notes</h2>
-<ul>
-  <li>Built as part of an academic assignment</li>
-  <li>Focus on clean UI and component structure</li>
-  <li>Uses client-side storage for simplicity</li>
-</ul>
