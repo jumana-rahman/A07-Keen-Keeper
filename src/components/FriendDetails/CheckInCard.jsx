@@ -29,7 +29,7 @@ const CheckInCard = ({friend}) => {
         localStorage.setItem("timeline", JSON.stringify(updated));
 
         // show toast
-        toast.success(`${type} added to timeline`);
+        toast.success(`${type} with ${friend.name}`);
     };
     return (
         <div>

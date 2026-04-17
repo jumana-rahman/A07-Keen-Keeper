@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+import { RiseLoader } from "react-spinners";
 
 const YourFriends = ({ friends }) => {
 
@@ -8,6 +11,14 @@ const YourFriends = ({ friends }) => {
         if (status === "almost due") return "bg-[#EFAD44]";
         return "bg-[#244D3F]";
     };
+
+    if (!friends || friends.length === 0) {
+        return (
+            <div className="flex justify-center items-center py-20">
+                <RiseLoader color="#244D3F" size={15} />
+            </div>
+        );
+    }
 
     return (
         <div className='pb-20'>

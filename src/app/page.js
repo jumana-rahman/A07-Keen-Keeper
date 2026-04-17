@@ -1,24 +1,25 @@
+"use client"
 import Banner from "@/components/homepage/Banner";
 import Counters from "@/components/homepage/Counters";
 import YourFriends from "@/components/homepage/YourFriends";
-import FriendsLoader from "@/components/loaders/FriendsLoader";
-import { Suspense } from "react";
+import { useEffect, useState } from "react";
 
+export default function Home() {
+  const [friends, setFriends] = useState([]);
 
-export default async function Home() {
-  const res = await fetch("http://localhost:3000/friends.json", {
-        cache: "no-store",
-    });
+  useEffect(() => {
+    fetch("/friends.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setFriends(data);
+      });
+  }, []);
 
-    const friends = await res.json();
   return (
-   <div className="bg-[#F8FAFC]">
-    <Banner/>
-
-   <Counters/>
-
-   <Suspense fallback={<FriendsLoader/>}> <YourFriends friends={friends}/> </Suspense>
-
-   </div>
+    <div className="bg-[#F8FAFC]">
+      <Banner />
+      <Counters />
+      <YourFriends friends={friends} />
+    </div>
   );
 }
