@@ -1,3 +1,4 @@
+import AnalyticsChart from '@/components/statsAnalytics/AnalyticsChart';
 import React from 'react';
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 const StatsPage = () => {
     return (
         <div>
-            stats
+            <AnalyticsChart/>
         </div>
     );
 };
