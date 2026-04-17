@@ -1,18 +1,36 @@
+"use client";
+
 import React from 'react';
 import { BiPhoneCall } from 'react-icons/bi';
 import { FiVideo } from 'react-icons/fi';
 import { MdOutlineTextsms } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const CheckInCard = ({friend}) => {
     const handleCheckIn = (type) => {
-    const entry = {
-      date: new Date().toISOString(),
-      title: `${type} with ${friend.name}`,
-      type,
-    };
+        const newEntry = {
+        id: Date.now(),
+        type: type,
+        title: `${type} with ${friend.name}`,
+        date: new Date().toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            }),
+        };
 
-    console.log("New Timeline Entry:", entry);
-  };
+        // get existing timeline
+        const existing = JSON.parse(localStorage.getItem("timeline")) || [];
+
+        // add new entry
+        const updated = [newEntry, ...existing];
+
+        // save to localStorage
+        localStorage.setItem("timeline", JSON.stringify(updated));
+
+        // show toast
+        toast.success(`${type} added to timeline`);
+    };
     return (
         <div>
             <div className='card p-8 bg-white border border-gray-100 rounded-md'>

@@ -1,3 +1,4 @@
+import Timeline from '@/components/timeline/Timeline';
 import React from 'react';
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 const TimelinePage = () => {
     return (
         <div>
-            Timeline
+            <Timeline/>
         </div>
     );
 };
