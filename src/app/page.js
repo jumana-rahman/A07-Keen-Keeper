@@ -3,14 +3,20 @@ import Counters from "@/components/homepage/Counters";
 import YourFriends from "@/components/homepage/YourFriends";
 
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("http://localhost:3000/friends.json", {
+        cache: "no-store",
+    });
+
+    const friends = await res.json();
   return (
    <div className="bg-[#F8FAFC]">
     <Banner/>
 
    <Counters/>
 
-   <YourFriends/>
+   <YourFriends friends={friends}/>
+
    </div>
   );
 }

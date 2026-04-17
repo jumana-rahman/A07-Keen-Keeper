@@ -20,7 +20,7 @@ const FriendPage = () => {
         });
     }, [id]);
 
-    if (!friend) return <p className="flex justify-center py-10"><RiseLoader color="#244D3F"/></p>;
+    if (!friend) return <p className="flex justify-center py-10"><RiseLoader color="#244D3F" /></p>;
 
     return (
         <div className='bg-[#F8FAFC] py-20'>

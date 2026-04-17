@@ -7,7 +7,6 @@ const Counters = () => {
     const [timeline, setTimeline] = useState([]);
 
     useEffect(() => {
-        // fetch friends from public folder
         fetch("/friends.json")
             .then(res => res.json())
             .then(data => setFriends(data));
@@ -17,7 +16,7 @@ const Counters = () => {
         setTimeline(storedTimeline);
     }, []);
 
-    // ✅ Calculations
+    // Calculations
     const totalFriends = friends.length;
 
     const onTrack = friends.filter(f => f.status === "on-track").length;
