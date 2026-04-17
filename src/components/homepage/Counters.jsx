@@ -11,8 +11,8 @@ const Counters = () => {
             .then(res => res.json())
             .then(data => setFriends(data));
 
-        // get timeline from sessionStorage
-        const storedTimeline = JSON.parse(sessionStorage.getItem("timeline")) || [];
+        // get timeline from localStorage
+        const storedTimeline = JSON.parse(localStorage.getItem("timeline")) || [];
         setTimeline(storedTimeline);
     }, []);
 

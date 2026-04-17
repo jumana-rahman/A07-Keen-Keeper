@@ -20,13 +20,13 @@ const CheckInCard = ({friend}) => {
         };
 
         // get existing timeline
-        const existing = JSON.parse(sessionStorage.getItem("timeline")) || [];
+        const existing = JSON.parse(localStorage.getItem("timeline")) || [];
 
         // add new entry
         const updated = [newEntry, ...existing];
 
         // save to localStorage
-        sessionStorage.setItem("timeline", JSON.stringify(updated));
+        localStorage.setItem("timeline", JSON.stringify(updated));
 
         // show toast
         toast.success(`${type} added to timeline`);

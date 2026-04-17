@@ -18,7 +18,7 @@ const Timeline = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const data = JSON.parse(sessionStorage.getItem("timeline")) || [];
+    const data = JSON.parse(localStorage.getItem("timeline")) || [];
     setTimeline(data);
     setMounted(true);
   }, []);

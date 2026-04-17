@@ -9,7 +9,7 @@ const AnalyticsChart = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const timeline = JSON.parse(sessionStorage.getItem("timeline")) || [];
+        const timeline = JSON.parse(localStorage.getItem("timeline")) || [];
 
         let call = 0;
         let text = 0;
