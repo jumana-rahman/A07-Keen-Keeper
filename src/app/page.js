@@ -1,6 +1,8 @@
 import Banner from "@/components/homepage/Banner";
 import Counters from "@/components/homepage/Counters";
 import YourFriends from "@/components/homepage/YourFriends";
+import FriendsLoader from "@/components/loaders/FriendsLoader";
+import { Suspense } from "react";
 
 
 export default async function Home() {
@@ -15,7 +17,7 @@ export default async function Home() {
 
    <Counters/>
 
-   <YourFriends friends={friends}/>
+   <Suspense fallback={<FriendsLoader/>}> <YourFriends friends={friends}/> </Suspense>
 
    </div>
   );

@@ -11,6 +11,7 @@ const YourFriends = ({ friends }) => {
 
     return (
         <div className='pb-20'>
+            
             <div className='max-w-[80%] mx-auto'>
                 <h3 className='text-[24px] text-[#1F2937] font-semibold pb-4'>
                     Your Friends
