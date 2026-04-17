@@ -18,7 +18,7 @@ const Timeline = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("timeline")) || [];
+    const data = JSON.parse(sessionStorage.getItem("timeline")) || [];
     setTimeline(data);
     setMounted(true);
   }, []);
@@ -83,18 +83,18 @@ const Timeline = () => {
         <div className="space-y-4">
 
           {timeline.length === 0 ? (
-            <p className="text-gray-500 text-center p-4 bg-white border rounded-lg">
+            <p className="text-gray-500 text-center p-4 bg-white border border-zinc-200 rounded-lg">
               No interactions yet.
             </p>
           ) : processedTimeline.length === 0 ? (
-            <p className="text-gray-500 text-center p-4 bg-white border rounded-lg">
+            <p className="text-gray-500 text-center p-4 bg-white border border-zinc-200 rounded-lg">
               No results found.
             </p>
           ) : (
             processedTimeline.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center gap-4 p-4 bg-white border rounded-lg"
+                className="flex items-center gap-4 p-4 bg-white border border-zinc-200 rounded-lg"
               >
 
                 {/* Icon */}
